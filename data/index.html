@@ -31,7 +31,7 @@
     var SAVE_PASSWD = 'x';
     var FW_VERSION = 'f';
 
-    var wsUriC = "ws://" + ipaddr + ":81";
+    var wsUriC = "ws://" + location.hostname + ":81";
     var ws;
     var pageState = 0;
     var connected = 0;
@@ -153,13 +153,13 @@
         }
 
         ws.onopen = function() {
-            $("#label_connect").html("connected");
+            $("#label_connect").html("ws connected");
             ws.send(PAGE_STATE + pageState);
             connected = 1;
         }
 
         ws.onclose = function() {
-            $("#label_connect").html("not connected");
+            $("#label_connect").html("ws Not connected");
             connected = 0;
             setTimeout(wsConnectC, 1000);
         }
@@ -177,7 +177,7 @@
             <h1 class="ui-title" role="heading" aria-level="1">Smart Power2</h1>
             <div class="ui-grid-c">
                 <div class="ui-block-a">
-                    <div style="margin:15px 0 0 10px;" id="label_connect">Not connected </div>
+                    <div style="margin:15px 0 0 10px;" id="label_connect">== ws Not connected==</div>
                 </div>
                 <div class="ui-block-b">
                 </div>
@@ -272,7 +272,7 @@
                         </li>
                         <li class="ui-field-contain">
                             <label for="passwd">Password:</label>
-                            <input type="text" id="tf_passwd" class="form-control" maxlength="8">
+                            <input type="text" id="tf_passwd" class="form-control" maxlength="9">
                         </li>
                         <li class="ui-body ui-body-b">
                             <fieldset class="ui-grid-a">
